@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
-# Runs the whole pipeline in order. Each step only needs the outputs of the steps before it.
+# Canonical end-to-end experiment pipeline.
 set -euo pipefail
 cd "$(dirname "$0")"
 
-python -m src.train                       # Tasks 1-2: baseline model + clean metrics
-python -m attacks.evasion                 # Task 5-6: FGSM/PGD vs baseline (ML01)
-python -m attacks.poisoning               # Task 5-6: backdoor poisoning (ML02)
-python -m defenses.adversarial_training   # Task 7: adversarial training
-python -m defenses.feature_squeezing      # Task 7: extra defense vs evasion
-python -m defenses.poison_filter          # Task 7: extra defense vs poisoning
-python -m src.summary                     # comparison tables -> results/summary.md
+# Examples:
+#   SSE_DEVICE=cpu  ./run_all.sh
+#   SSE_DEVICE=cuda ./run_all.sh
+#   SSE_DEVICE=auto ./run_all.sh
+export SSE_DEVICE="${SSE_DEVICE:-auto}"
+echo "SSE_DEVICE=$SSE_DEVICE"
+
+python scripts/record_environment.py
+python -m src.train
+python -m attacks.evasion
+python -m attacks.poisoning
+python -m defenses.adversarial_training
+python -m defenses.feature_squeezing
+python -m defenses.poison_filter
+python -m src.summary
