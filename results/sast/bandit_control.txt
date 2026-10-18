@@ -1,99 +1,99 @@
-Run started:2026-10-14 11:27:36.534049+00:00
+Run started:2026-10-18 21:16:09.169718+00:00
 
 Test results:
 >> Issue: [B403:blacklist] Consider possible security implications associated with pickle module.
    Severity: Low   Confidence: High
    CWE: CWE-502 (https://cwe.mitre.org/data/definitions/502.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b403-import-pickle
-   Location: sast/control/insecure_patterns.py:7:0
-6	"""
-7	import pickle
-8	import random
+   Location: sast/control/insecure_patterns.py:2:0
+1	"""Deliberately insecure SAST control sample. Never import or execute this file."""
+2	import pickle
+3	import random
 
 --------------------------------------------------
 >> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
    Severity: Low   Confidence: High
    CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
-   Location: sast/control/insecure_patterns.py:9:0
-8	import random
-9	import subprocess
-10	import urllib.request
+   Location: sast/control/insecure_patterns.py:4:0
+3	import random
+4	import subprocess
+5	import urllib.request
 
 --------------------------------------------------
 >> Issue: [B614:pytorch_load] Use of unsafe PyTorch load
    Severity: Medium   Confidence: High
    CWE: CWE-502 (https://cwe.mitre.org/data/definitions/502.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b614_pytorch_load.html
-   Location: sast/control/insecure_patterns.py:17:11
-16	    # Fix in src/common.py: load_model() -> torch.load(weights_only=True) + SHA-256 manifest check
-17	    return torch.load(path)
-18	
+   Location: sast/control/insecure_patterns.py:12:11
+11	    # Real fix: weights_only=True plus SHA-256 verification in src/common.py::load_model.
+12	    return torch.load(path)
+13	
 
 --------------------------------------------------
 >> Issue: [B301:blacklist] Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
    Severity: Medium   Confidence: High
    CWE: CWE-502 (https://cwe.mitre.org/data/definitions/502.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b301-pickle
-   Location: sast/control/insecure_patterns.py:23:15
-22	    with open(path, "rb") as f:
-23	        return pickle.load(f)
-24	
+   Location: sast/control/insecure_patterns.py:18:15
+17	    with open(path, "rb") as f:
+18	        return pickle.load(f)
+19	
 
 --------------------------------------------------
 >> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
    Severity: Medium   Confidence: Medium
    CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
-   Location: sast/control/insecure_patterns.py:28:14
-27	    # Fix: torchvision.datasets.MNIST(download=True) with built-in MD5 verification
-28	    archive = "/tmp/mnist.gz"
-29	    urllib.request.urlretrieve(url, archive)
+   Location: sast/control/insecure_patterns.py:23:14
+22	    # Real fix: torchvision.datasets.MNIST(download=True) uses fixed dataset mirrors and integrity checks.
+23	    archive = "/tmp/mnist.gz"
+24	    urllib.request.urlretrieve(url, archive)
 
 --------------------------------------------------
 >> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
    Severity: Medium   Confidence: High
    CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen
-   Location: sast/control/insecure_patterns.py:29:4
-28	    archive = "/tmp/mnist.gz"
-29	    urllib.request.urlretrieve(url, archive)
-30	    subprocess.call("gunzip -f " + archive, shell=True)
+   Location: sast/control/insecure_patterns.py:24:4
+23	    archive = "/tmp/mnist.gz"
+24	    urllib.request.urlretrieve(url, archive)
+25	    subprocess.call("gunzip -f " + archive, shell=True)
 
 --------------------------------------------------
 >> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
    Severity: High   Confidence: High
    CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
-   Location: sast/control/insecure_patterns.py:30:4
-29	    urllib.request.urlretrieve(url, archive)
-30	    subprocess.call("gunzip -f " + archive, shell=True)
-31	    return archive
+   Location: sast/control/insecure_patterns.py:25:4
+24	    urllib.request.urlretrieve(url, archive)
+25	    subprocess.call("gunzip -f " + archive, shell=True)
+26	    return archive
 
 --------------------------------------------------
 >> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
    Severity: Low   Confidence: High
    CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
-   Location: sast/control/insecure_patterns.py:36:11
-35	    # Fix: seeded torch.Generator; non-cryptographic randomness is acceptable here
-36	    return random.sample(range(n), k)
-37	
+   Location: sast/control/insecure_patterns.py:31:11
+30	    # Intentional control finding. Poison selection is reproducibility-sensitive, not secret-sensitive.
+31	    return random.sample(range(n), k)
+32	
 
 --------------------------------------------------
 >> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
    Severity: Low   Confidence: High
    CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
-   Location: sast/control/insecure_patterns.py:41:4
-40	    # Fix: explicit exception (_check_name in src/common.py raises ValueError)
-41	    assert x.shape[1:] == (1, 28, 28)
-42	    return x
+   Location: sast/control/insecure_patterns.py:36:4
+35	    # Real fix: validate_images/validate_dataset raise explicit exceptions in src/common.py.
+36	    assert x.shape[1:] == (1, 28, 28)
+37	    return x
 
 --------------------------------------------------
 
 Code scanned:
-	Total lines of code: 25
+	Total lines of code: 21
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 

@@ -1,0 +1,10 @@
+bandit_app_txt=0
+bandit_app_json=0
+bandit_control_txt=1
+bandit_control_json=1
+semgrep_app_txt=0
+semgrep_app_json=0
+semgrep_control_txt=1
+semgrep_control_json=1
+pip_audit_json=0
+pip_audit_txt=0
