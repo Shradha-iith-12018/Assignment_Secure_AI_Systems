@@ -1,22 +1,24 @@
 {
-  "threshold": 0.13613183796405792,
+  "threshold": 0.1036762148141861,
   "target_false_positive_rate": 0.05,
+  "calibration_size": 5000,
+  "device": "cpu",
   "clean": {
-    "raw_accuracy": 0.989799976348877,
-    "bit_depth_1_accuracy": 0.9865999817848206,
-    "median_2x2_accuracy": 0.980400025844574,
-    "flagged_rate": 0.06449999660253525
+    "raw_accuracy": 0.9909999966621399,
+    "bit_depth_1_accuracy": 0.9890999794006348,
+    "median_2x2_accuracy": 0.98089998960495,
+    "flagged_rate": 0.06780000030994415
   },
   "fgsm": {
-    "raw_accuracy": 0.5425999760627747,
-    "bit_depth_1_accuracy": 0.9301999807357788,
-    "median_2x2_accuracy": 0.6625000238418579,
-    "flagged_rate": 0.7421000003814697
+    "raw_accuracy": 0.4909000098705292,
+    "bit_depth_1_accuracy": 0.9376999735832214,
+    "median_2x2_accuracy": 0.6136000156402588,
+    "flagged_rate": 0.7652000188827515
   },
   "pgd": {
-    "raw_accuracy": 0.009499999694526196,
-    "bit_depth_1_accuracy": 0.9236000180244446,
-    "median_2x2_accuracy": 0.1404999941587448,
-    "flagged_rate": 0.9704999923706055
+    "raw_accuracy": 0.008899999782443047,
+    "bit_depth_1_accuracy": 0.9312000274658203,
+    "median_2x2_accuracy": 0.15649999678134918,
+    "flagged_rate": 0.9768999814987183
   }
 }
