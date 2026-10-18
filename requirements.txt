@@ -1,0 +1,6 @@
+torch>=2.6
+torchvision>=0.21
+adversarial-robustness-toolbox>=1.18
+numpy>=1.26
+scikit-learn>=1.4
+matplotlib>=3.8

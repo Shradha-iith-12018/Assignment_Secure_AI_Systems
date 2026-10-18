@@ -1,0 +1,22 @@
+{
+  "threshold": 0.13613183796405792,
+  "target_false_positive_rate": 0.05,
+  "clean": {
+    "raw_accuracy": 0.989799976348877,
+    "bit_depth_1_accuracy": 0.9865999817848206,
+    "median_2x2_accuracy": 0.980400025844574,
+    "flagged_rate": 0.06449999660253525
+  },
+  "fgsm": {
+    "raw_accuracy": 0.5425999760627747,
+    "bit_depth_1_accuracy": 0.9301999807357788,
+    "median_2x2_accuracy": 0.6625000238418579,
+    "flagged_rate": 0.7421000003814697
+  },
+  "pgd": {
+    "raw_accuracy": 0.009499999694526196,
+    "bit_depth_1_accuracy": 0.9236000180244446,
+    "median_2x2_accuracy": 0.1404999941587448,
+    "flagged_rate": 0.9704999923706055
+  }
+}

@@ -1,0 +1,4 @@
+# Security tooling for Task 4 (kept separate from the runtime dependencies)
+bandit>=1.8
+semgrep>=1.100
+pip-audit>=2.7

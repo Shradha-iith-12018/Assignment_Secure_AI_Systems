@@ -1,0 +1,32 @@
+                   
+                   
+┌─────────────────┐
+│ 3 Code Findings │
+└─────────────────┘
+                                     
+    sast/control/insecure_patterns.py
+   ❯❯❱ trailofbits.python.pickles-in-pytorch.pickles-in-pytorch
+          ❰❰ Blocking ❱❱
+          Functions reliant on pickle can result in arbitrary code execution.  Consider loading from
+          `state_dict`, using fickling, or switching to a safer serialization method like ONNX      
+          Details: https://sg.run/NwQy                                                              
+                                                                                                    
+           17┆ return torch.load(path)
+   
+    ❯❱ python.lang.security.deserialization.pickle.avoid-pickle
+          ❰❰ Blocking ❱❱
+          Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the
+          serialized data could be manipulated to run arbitrary code. Instead, consider serializing the       
+          relevant data as JSON or a similar text-based serialization format.                                 
+          Details: https://sg.run/OPwB                                                                        
+                                                                                                              
+           23┆ return pickle.load(f)
+   
+    ❯❱ python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
+          ❰❰ Blocking ❱❱
+          Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic    
+          value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib  
+          calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.
+          Details: https://sg.run/dKZZ                                                                        
+                                                                                                              
+           29┆ urllib.request.urlretrieve(url, archive)
