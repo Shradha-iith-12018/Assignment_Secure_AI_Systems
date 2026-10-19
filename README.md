@@ -45,7 +45,6 @@ Assignment_Secure_AI_Systems/
 ├── src/
 │   ├── common.py
 │   ├── metrics.py
-│   ├── model.py
 │   ├── summary.py
 │   └── train.py
 ├── attacks/
