@@ -577,46 +577,29 @@ Additional modeled threats include:
 
 ## Report
 
-The current project report is available as:
+The final project report is available as:
 
 ```text
 Report.pdf
 ```
 
-A final LaTeX report will be generated from the finalized repository and canonical experiment results.
+All reported metrics come from the canonical result set `cpu-canonical-v1`. The tag `cpu-shradha-v1` preserves an independent CPU reproduction using the same source code, which the report uses as a reproducibility check.
 
 ---
 
 ## Contributors
 
-This project was completed by two students as part of the Secure Software Engineering course.
-
-The final contribution split will be documented explicitly after ownership is finalized.
-
-Current planned responsibility areas:
+This project was completed by two students as part of the Secure Software Engineering course:
 
 ```text
-Contributor 1:
-    baseline model
-    threat modeling
-    adversarial attacks
-    poisoning
-    red-team evaluation
-
-Contributor 2:
-    SAST
-    secure software controls
-    adversarial training
-    feature squeezing
-    activation clustering
-    blue-team evaluation
+Shradha Sanjaykant Suryawanshi   CS25MTECH12018
+Suresh Kumar Baddipudi           CS25M26P140002
 ```
 
-Both contributors will participate in:
-- integration,
-- validation,
-- result interpretation,
-- final report preparation.
+- Shradha Suryawanshi developed the initial end-to-end implementation (baseline CNN, red-team attacks, blue-team defenses, initial SAST pipeline, experiments) and independently reproduced the complete pipeline on a second CPU system (`cpu-shradha-v1`).
+- Suresh Kumar Baddipudi performed security hardening and refactoring, improved reproducibility and device portability, strengthened SAST evidence, migrated model serialization to `safetensors`, and generated the canonical result set (`cpu-canonical-v1`).
+
+Both contributors participated in validation, interpretation of results, and preparation of the final report. The full contribution statement is in Section 11 of the report.
 
 ---
 
